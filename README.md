@@ -291,15 +291,15 @@ you having to navigate there.
 The `cd` command works in a similar way. Try entering:
 
     cd
-    cd edamame-data/shell/hidden
+    cd shell/hidden
 
 and you will jump directly to `hidden` without having to go through
 the intermediate directory.
 
 ****
-**Exercise**
+##EXERCISE
 
-Try finding the 'anotherfile.txt' file without changing directories.
+- Try finding the 'anotherfile.txt' file without changing directories.
 ****
 
 ### Shortcut: Tab Completion
@@ -309,10 +309,10 @@ lot of time. When you start typing out the name of a directory, then
 hit the tab key, the shell will try to fill in the rest of the
 directory name. For example, enter:
 
-    cd e<tab>
+    cd s<tab>
 
 The shell will fill in the rest of the directory name for
-`edamame-data`. Now go to edamame-data/shell/MiSeq
+`shell`. Now go to shell/MiSeq
 
     ls F3D<tab><tab>
 
@@ -326,7 +326,7 @@ enter `e<tab><tab>`. You will see the name of every program that
 starts with an `e`. One of those is `echo`. If you enter `ec<tab>` you
 will see that tab completion works.
 
-
+---
 
 ## Full vs. Relative Paths
 
@@ -348,16 +348,16 @@ directory in `home` which is a directory in `/`.
 
 Now enter the following command:
 
-    cd /home/username/edamame-data/shell/hidden
+    cd /home/username/shell/hidden
 
 This jumps to `hidden`. Now go back to the home directory (cd). We saw
 earlier that the command:
 
-    cd edamame-data/shell/hidden
+    cd shell/hidden
 
 had the same effect - it took us to the `hidden` directory. But,
 instead of specifying the full path
-(`/home/username/edamame-data/shell`), we specified a *relative path*. In
+(`/home/username/shell`), we specified a *relative path*. In
 other words, we specified the path relative to our current
 directory. A full path always starts with a `/`. A relative path does
 not.
@@ -380,14 +380,14 @@ structure of the directories that you are using and how to quickly
 navigate amongst them.
 
 * * * *
-**Short Exercise**
+##EXERCISE
 
-Now, list the contents of the /bin directory. Do you see anything
+- List the contents of the /bin directory. Do you see anything
 familiar in there?
 
 * * * *
 
-## Saving time with shortcuts, wild cards, and tab completion
+## Saving time with shortcuts and wild cards
 
 ### Shortcuts
 
@@ -397,7 +397,6 @@ home directory is very common. So, in the shell the tilde character,
 directory:
 
     cd
-    cd edamame-data
     cd shell
 
 Then enter the command:
@@ -410,20 +409,19 @@ above your current directory. Thus:
 
     ls ..
 
-prints the contents of the `/home/username/edamame-data`. You can chain
+prints the contents of the `/home/username/`. You can chain
 these together, so:
 
     ls ../../
 
-prints the contents of `/home/username` which is your home
-directory. Finally, the special directory `.` always refers to your
+prints the contents of `/home/`. Finally, the special directory `.` always refers to your
 current directory. So, `ls`, `ls .`, and `ls ././././.` all do the
 same thing, they print the contents of the current directory. This may
 seem like a useless shortcut right now, but we'll see when it is
 needed in a little while.
 
 To summarize, while you are in the `shell` directory, the commands
-`ls ~`, `ls ~/.`, `ls ../../`, and `ls /home/username` all do exactly the
+`ls ~`, `ls ~/.`, `ls ../`, and `ls /home/username` all do exactly the
 same thing. These shortcuts are not necessary, they are provided for
 your convenience.
 
@@ -445,7 +443,7 @@ We want to be able to look at these files and do some things with them.
 
 ### Wild cards
 
-Navigate to the `~/edamame-data/shell/MiSeq` directory. This
+Navigate to the `~/shell/MiSeq` directory. This
 directory contains our FASTQ files and some other ones
 we'll need for analyses. If we type `ls`,
 we will see that there are a bunch of files with long file names.
@@ -479,13 +477,14 @@ that match the given pattern. In this case, it identified four such
 files. Then, it replaced the `*R1*fastq` with the list of files, separated
 by spaces.
 
-What happens if you do `R1*fastq`?
+
 
 
 * * * *
-**Short Exercise**
+##EXERCISE
 
-Do each of the following using a single `ls` command without
+- What happens if you do `R1*fastq`?
+- Do each of the following using a single `ls` command without
 navigating to a different directory.
 
 1.  List all of the files in `/bin` that start with the letter 'c
@@ -531,7 +530,7 @@ then you could repeat command #260 by simply entering:
 * * * *
 **Short Exercise**
 
-1. Find the line number in your history for the last exercise (listing
+- Find the line number in your history for the last exercise (listing
 files in /bin) and reissue that command.
 
 * * * *
@@ -551,12 +550,12 @@ contents using the program `cat`. Enter the following command:
 This prints out the contents of the `F3D0_S188_L001_R1_001.fastq` file.
 
 * * * *
-**Short Exercises**
+#EXERCISE
 
-1.  Print out the contents of the `~/edamame-data/shell/MiSeq/stability.files`
+-  Print out the contents of the `~/edamame-data/shell/MiSeq/stability.files`
     file. What does this file contain?
 
-2.  Without changing directories, (you should still be in `edamame-data`),
+-  Without changing directories, (you should still be in `edamame-data`),
     use one short command to print the contents of all of the files in
     the `/home/username/edamame-data/shell/MiSeq` directory.
 
@@ -566,7 +565,7 @@ Make sure we're in the right place for the next set of the lessons. We
 want to be in the `shell` directory. Check if you're there with `pwd`
 and if not navigate there. One way to do that would be
 
-    cd ~/edamame-data/shell/MiSeq
+    cd ~/shell/MiSeq
 
 `cat` is a terrific program, but when the file is really big, it can
 be annoying to use. The program, `less`, is useful for this
@@ -612,15 +611,15 @@ to see the beginning or end of the file, or see how it's formatted.
 The commands are `head` and `tail` and they just let you look at
 the beginning and end of a file respectively.
 
-head F3D0_S188_L001_R1_001.fastq
-tail F3D0_S188_L001_R1_001.fastq
+    head F3D0_S188_L001_R1_001.fastq
+    tail F3D0_S188_L001_R1_001.fastq
 
 The `-n` option to either of these commands can be used to print the
 first or last `n` lines of a file. To print the first/last line of the
 file use:
 
-head -n 1 F3D0_S188_L001_R1_001.fastq
-tail -n 1 F3D0_S188_L001_R1_001.fastq
+    head -n 1 F3D0_S188_L001_R1_001.fastq
+    tail -n 1 F3D0_S188_L001_R1_001.fastq
 
 
 ## Searching files
@@ -643,15 +642,18 @@ The `-A` flag stands for "after match" so it's returning the line that
 matches plus the three after it. The `-B` flag returns that number of lines
 before the match.
 
-** Exercise **
+***
+##EXERCISE
 
-Search for the sequence 'TTATCCGGATTTATTGGGTTTAAAGGGT' in the
+- Search for the sequence 'TTATCCGGATTTATTGGGTTTAAAGGGT' in the
 F3D0_S188_L001_R1_001.fastq file and in the output have the
 sequence name and the sequence. e.g.  
 @M00967:43:000000000-A3JHG:1:2114:11799:28499 1:N:0:188  
 TACGGAGGATGCGAGCGTTATCCGGATTTATTGGGTTTAAAGGGTGCGTAGGCGGGATGCAG
 
-Search for that sequence in all the FASTQ files.
+- Search for that sequence in all the FASTQ files.
+
+***
 
 ## Redirection
 
@@ -761,7 +763,7 @@ just nicely put the files in the Trash. They're really gone.
 
 
 * * * *
-**Short Exercise**
+##EXERCISE
 
 Do the following:
 
@@ -792,11 +794,11 @@ a file that contains the favorite grep command so you can remember it for later.
 
 Now you have something that looks like
 
-![nano1.png](img/shell/nano1.png)
+![nano1.png](img/nano1.png)
 
 Type in your command, so it looks like
 
-![nano2.png](img/shell/nano2.png)
+![nano2.png](img/nano2.png)
 
 Now we want to save the file and exit. At the bottom of nano, you see the "^X Exit". That
 means that we use Ctrl-X to exit. Type `Ctrl-X`. It will ask if you want to save it. Type `y` for yes.
@@ -865,11 +867,11 @@ directory. This tells the shell to run the `hello.sh` program which is
 located right here. So, you can run any program by entering the path
 to that program. You can run `hello.sh` equally well by specifying:
 
-    /home/username/edamame-data/shell/hello.sh
+    /home/username/shell/hello.sh
 
 Or by entering:
 
-    ~/edamame-data/shell/hello.sh
+    ~/shell/hello.sh
 
 When there are no `/` characters, the shell assumes you want to look
 in one of the default places for the program.
@@ -904,49 +906,6 @@ Congratulations, you just created your first shell script! You're set to rule th
 
 
 
-# For Future Reference
-
-# Finding files
-
-The `find` program can be used to find files based on arbitrary
-criteria. Navigate to the `data` directory and enter the following
-command:
-
-    find . -print
-
-This prints the name of every file or directory, recursively, starting
-from the current directory. Let's exclude all of the directories:
-
-    find . -type f -print
-
-This tells `find` to locate only files. Now try these commands:
-
-    find . -type f -name "*1*"
-    find . -type f -name "*1*" -or -name "*2*" -print
-    find . -type f -name "*1*" -and -name "*2*" -print
-
-The `find` command can acquire a list of files and perform some
-operation on each file. Try this command out:
-
-    find . -type f -exec grep Volume {} \;
-
-This command finds every file starting from `.`. Then it searches each
-file for a line which contains the word "Volume". The `{}` refers to
-the name of each file. The trailing `\;` is used to terminate the
-command.  This command is slow, because it is calling a new instance
-of `grep` for each item the `find` returns.
-
-A faster way to do this is to use the `xargs` command:
-
-    find . -type f -print | xargs grep Volume
-
-`find` generates a list of all the files we are interested in,
-then we pipe them to `xargs`.  `xargs` takes the items given to it
-and passes them as arguments to `grep`.  `xargs` generally only creates
-a single instance of `grep` (or whatever program it is running).
-
-
-
 ## Where can I learn more about the shell?
 
 - Software Carpentry tutorial - [The Unix shell](http://software-carpentry.org/v4/shell/index.html)
@@ -959,26 +918,3 @@ have probably had the same question.
 - Learn by doing. There's no real other way to learn this than by trying it
 out.  Write your next paper in nano (really emacs or vi), open pdfs from
 the command line, automate something you don't really need to automate.
-
-
-## Bonus:
-
-**backtick, xargs**: Example find all files with certain text
-
-**alias** -> rm -i
-
-**variables** -> use a path example
-
-**.bashrc**
-
-**du**
-
-**ln**
-
-**ssh and scp**
-
-**Regular Expressions**
-
-**Permissions**
-
-**Chaining commands together**
