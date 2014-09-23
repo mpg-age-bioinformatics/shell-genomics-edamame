@@ -1,15 +1,11 @@
----
-layout: page
-title: "The Shell"
-comments: true
-date: 2014-08-13 16:44:36
----
 
 # The Shell
 
 Author: Tracy Teal  
 Original contributors:
 Paul Wilson, Milad Fatenejad, Sasha Wood and Radhika Khetani for Software Carpentry (http://http://software-carpentry.org/)
+
+---
 
 ## Objectives
 - What is the shell?
@@ -21,6 +17,8 @@ Paul Wilson, Milad Fatenejad, Sasha Wood and Radhika Khetani for Software Carpen
   - automating tasks
 - What is it good for?
 - Where are resources where I can learn more? (because the shell is awesome)
+
+---
 
 ## What is the shell?
 
@@ -39,26 +37,28 @@ more quickly.  When you need to do things tens to hundreds of times,
 knowing how to use the shell is transformative.
 * To use remote computers or cloud computing, you need to use the shell.
 
+---
+
+## Automation
 
 ![Automation](img/gvng.jpg)
 
   Unix is user-friendly. It's just very selective about who its friends are.
 
-
-Today we're going to go through how to access Unix/Linux and some of the basic
-shell commands.
+---
 
 ## Information on the shell
 
-shell cheat sheets:<br>
+Shell cheat sheets:<br>
 * [http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/](http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
 * [https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md](https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md)
 
-Explain shell - a web site where you can see what the different components of
+Web sites where you can see what the different components of
 a shell command are doing.  
 * [http://explainshell.com](http://explainshell.com)
 * [http://www.commandlinefu.com](http://www.commandlinefu.com)
 
+---
 
 ## How to access the shell
 
@@ -78,11 +78,8 @@ For Windows, we're going to be using gitbash.
 Download and install [gitbash](http://msysgit.github.io)
 Open up the program.
 
-Linux  
------
-Well, you should be set.
 
-
+---
 
 ## Starting with the shell
 
@@ -96,38 +93,64 @@ Open the shell
 
 Enter the command:
 
-    git clone https://github.com/tracykteal/tutorials/
+    curl http://tracykteal.github.io/shell-genomics/data.zip > shell
 
-This command will grab all of the data needed for this workshop from
-the internet.  (We're not going to talk about git right now, but it's a tool for
-doing version control.)
+This command will grab all of the data needed for this workshop.
 
-Now let's go in to that directory
-    cd tutorial-shell-genomics
-This stands for 'change directory'
+---
+
+## Let's get started!
+
+Today we're going to go through using the command line.
+
+---
+
+## Running through commands
+
+These commands are in the README.pdf file and on your handout.
+
+---
+
+## Handout
+
+Let's go in to that directory
+
+    cd shell
+
+`cd` stands for 'change directory'
 
 In this directory, there should be some things we just downloaded.
 Let's check. Type:
+
     ls
-ls stands for 'list' and it lists the contents of a directory.
+
+`ls` stands for 'list' and it lists the contents of a directory.
 
 There's a few directories there, but not too many. Let's go look in the data
 directory.
-    cd data
+
+    cd shell
     ls
 
 In there, all mixed up together are files and directories/folders. If we want to
 know which is which, we can type:
+
     ls -F
+
 Anything with a "/" after it is a directory.  
 Things with a "*" after them are programs.  
 It there's nothing there it's a file.
 
-You can also use the command `ls -l` to see whether items in a
-directory are files or directories. `ls -l` gives a lot more
-information too, such as the size of the file
+You can also use the command
+
+    ls -l
+
+to see whether items in a directory are files or directories. It
+gives a lot more information too, such as the size of the file
 
 So, we can see that we have several files, directories and a program. Great!
+
+---
 
 ## Arguments
 
@@ -142,7 +165,7 @@ manual using the `man` program. Try entering:
     man ls
 
 This will open the manual page for `ls`. Use the space key to go
-forward and b to go backwards. When you are done reading, just hit `q`
+forward and `b` to go backwards. When you are done reading, just hit `q`
 to quit.
 
 Programs that are run from the shell can get extremely complicated. To
@@ -151,6 +174,7 @@ No one can possibly learn all of
 these arguments, of course. So you will probably find yourself
 referring back to the manual page frequently.
 
+---
 
 ## The Unix directory file structure (a.k.a. where am I?)
 
@@ -164,17 +188,20 @@ and make sure the program has access to the data. Many of the problems
 people run in to with command line bioinformatics programs is not having the
 data in the place the program expects it to be.
 
+---
 
 ## Moving around the file system
 
 Let's practice moving around a bit.
 
-We're going to work in that `tutorial-shell-genomics` directory we just downloaded.
+We're going to work in that `shell` directory we just downloaded.
 
 First let's navigate there using the regular way by clicking on the different folders.
 
 First we did something like go to the folder of our username. Then we opened
-'tutorial-shell-genomics' then 'data'
+'shell'
+
+---
 
 Let's draw out how that went.
 
@@ -194,35 +221,48 @@ you are on one of the branches of that tree, your home directory (/home/username
 Now let's go do that same navigation at the command line.
 
 Type
-    cd
-This puts you in your home directory. This folder here.
 
-Now using `cd` and `ls`, go in to the 'tutorial-shell-genomics' directory and list its contents.
+    cd
+
+This puts you in your home directory. That's /home/username
+
+***
+##EXERCISE
+
+- Using `cd` and `ls`, go in to the 'shell' directory and list its contents.
+- How many files, how many directories and how many programs are there?
+
+***
+
+## Where am I?
 
 Let's also check to see where we are. Sometimes when we're wandering around
 in the file system, it's easy to lose track of where we are and get lost.
 
 If you want to know what directory you're currently in, type
+
     pwd
+
 This stands for 'print working directory'. The directory you're currently
 working in.
 
-What if we want to move back up and out of the 'data' directory? Can we just
-type 'tutorial-shell-genomics'? Try it and see what happens.
+What if we want to move back up and out of the 'shell' directory? Can we just
+type 'shell'? Try it and see what happens.
 
 To go 'back up a level' we need to use `..`
 
 Type
+
     cd ..
 
 Now do `ls` and `pwd`. See now that we went back up in to the 'tutorial-shell-genomics'
 directory. `..` just means go back up a level.
 
 ***
-**Exercise**
+##EXERCISE
 
-Now we're going to try a hunt.  
-Move around in the 'hidden' directory and try to find the file 'youfoundit.txt'
+Now, we're going on a file hunt.
+- Move around in the 'hidden' directory and try to find the file 'youfoundit.txt'
 ***
 
 
@@ -242,9 +282,9 @@ Type:
 
 Then enter the command:
 
-    ls edamame-data
+    ls shell
 
-This will list the contents of the `edamame-data` directory without
+This will list the contents of the `shell` directory without
 you having to navigate there.
 
 
@@ -437,7 +477,7 @@ So how does this actually work? Well...when the shell (bash) sees a
 word that contains the `*` character, it automatically looks for filenames
 that match the given pattern. In this case, it identified four such
 files. Then, it replaced the `*R1*fastq` with the list of files, separated
-by spaces. 
+by spaces.
 
 What happens if you do `R1*fastq`?
 
