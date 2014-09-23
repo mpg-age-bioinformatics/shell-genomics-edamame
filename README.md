@@ -1,22 +1,9 @@
 
-# The Shell
+# The Command Line or the Shell
 
 Author: Tracy Teal  
 Original contributors:
 Paul Wilson, Milad Fatenejad, Sasha Wood and Radhika Khetani for Software Carpentry (http://http://software-carpentry.org/)
-
----
-
-## Objectives
-- What is the shell?
-- How do you access it?
-- How do you use it?
-  - Getting around the Unix file system
-  - looking at files
-  - manipulating files
-  - automating tasks
-- What is it good for?
-- Where are resources where I can learn more? (because the shell is awesome)
 
 ---
 
@@ -57,6 +44,19 @@ Web sites where you can see what the different components of
 a shell command are doing.  
 * [http://explainshell.com](http://explainshell.com)
 * [http://www.commandlinefu.com](http://www.commandlinefu.com)
+
+---
+
+## Objectives
+- What is the shell?
+- How do you access it?
+- How do you use it?
+  - Getting around the Unix file system
+  - looking at files
+  - manipulating files
+  - automating tasks
+- What is it good for?
+- Where are resources where I can learn more? (because the shell is awesome)
 
 ---
 
