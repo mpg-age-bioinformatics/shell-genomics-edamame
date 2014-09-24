@@ -94,7 +94,7 @@ Open the shell
 Enter the command:
 
 ```
-git clone https://github.com/tracykteal/shell-genomics.git
+git clone https://github.com/tracykteal/shell-genomics.git -b gh-pages
 
 ```
 

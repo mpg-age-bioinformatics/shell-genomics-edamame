@@ -6,7 +6,7 @@ This will be many of the commands run in the workshop
 Start by getting the materials for the workshop.
 Go to the command line and type:
 
-    git clone https://github.com/tracykteal/shell-genomics.git
+    git clone https://github.com/tracykteal/shell-genomics.git -b gh-pages
 
 Once the lessons are downloaded, we'll go in to that directory
 
