@@ -38,7 +38,7 @@ knowing how to use the shell is transformative.
 
 Shell cheat sheets:<br>
 * [http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/](http://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
-* [https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md](https://github.com/swcarpentry/boot-camps/blob/master/shell/shell_cheatsheet.md)
+* [https://github.com/swcarpentry/boot-camps/blob/master/shell-genomics/shell_cheatsheet.md](https://github.com/swcarpentry/boot-camps/blob/master/shell-genomics/shell_cheatsheet.md)
 
 Web sites where you can see what the different components of
 a shell command are doing.  
@@ -93,9 +93,20 @@ Open the shell
 
 Enter the command:
 
-    curl http://tracykteal.github.io/shell-genomics/data.zip > shell
+```
+git clone https://github.com/tracykteal/shell-genomics.git
+
+```
 
 This command will grab all of the data needed for this workshop.
+It's using something called git that's used for version control,
+but we won't talk about that here
+
+Alternatively you can go to
+
+    https://github.com/tracykteal/shell-genomics
+
+And click on 'Download Zip' in the bottom right
 
 ---
 
@@ -107,39 +118,49 @@ Today we're going to go through using the command line.
 
 ## Running through commands
 
-These commands are in the README.pdf file and on your handout.
+These commands are in the README.md file and on your handout.
 
 ---
 
-## Handout
+## Starting with the shell
 
-Let's go in to that directory
+Let's go in to that directory we just downloaded
 
-    cd shell
+```
+    cd shell-genomics
 
 `cd` stands for 'change directory'
+
+```
 
 In this directory, there should be some things we just downloaded.
 Let's check. Type:
 
+```
     ls
 
 `ls` stands for 'list' and it lists the contents of a directory.
+```
+There's a few directories there, but not too many.
 
-There's a few directories there, but not too many. Let's go look in the data
-directory.
+```
+Let's go look in the 'data' directory.
 
-    cd shell
+    cd data
     ls
+```
 
 In there, all mixed up together are files and directories/folders. If we want to
 know which is which, we can type:
 
+```
     ls -F
 
 Anything with a "/" after it is a directory.  
 Things with a "*" after them are programs.  
 It there's nothing there it's a file.
+
+```
 
 You can also use the command
 
@@ -159,14 +180,18 @@ behavior. For example, `-F` and `-l` are arguments to `ls`.  The `ls`
 program, like many programs, take a lot of arguments. But how do we
 know what the options are to particular commands?
 
-Most commonly used shell programs have a manual. You can access the
-manual using the `man` program. Try entering:
+Most commonly used shell programs have a manual. Let's open the manual page for `ls`.
+
+```
+You can access the manual using the `man` program.
 
     man ls
 
-This will open the manual page for `ls`. Use the space key to go
-forward and `b` to go backwards. When you are done reading, just hit `q`
-to quit.
+Space key goes forward  
+Or use the arrow keys to scroll up and down.  
+When you are done reading, just hit `q` to quit.
+
+```
 
 Programs that are run from the shell can get extremely complicated. To
 see an example, open up the manual page for the `find` program.
@@ -194,12 +219,12 @@ data in the place the program expects it to be.
 
 Let's practice moving around a bit.
 
-We're going to work in that `shell` directory we just downloaded.
+We're going to work in that `shell-genomics` directory we just downloaded.
 
 First let's navigate there using the regular way by clicking on the different folders.
 
 First we did something like go to the folder of our username. Then we opened
-'shell'
+'shell-genomics'
 
 ---
 
@@ -210,10 +235,11 @@ Now let's draw some of the other files and folders we could have clicked on.
 This is called a hierarchical file system structure, like an upside down tree
 with root (/) at the base that looks like this.
 
-
 ![Unix](img/Slide1.jpg)
 
 That (/) at the base is often also called the 'top' level.
+
+
 
 When you are working at your computer or log in to a remote computer,
 you are on one of the branches of that tree, your home directory (/home/username)
@@ -229,7 +255,8 @@ This puts you in your home directory. That's /home/username
 ***
 ##EXERCISE
 
-- Using `cd` and `ls`, go in to the 'shell' directory and list its contents.
+- Using `cd` and `ls`, go in to the 'shell-genomics/data' directory
+and list its contents.
 - How many files, how many directories and how many programs are there?
 
 ***
@@ -241,12 +268,15 @@ in the file system, it's easy to lose track of where we are and get lost.
 
 If you want to know what directory you're currently in, type
 
+```
     pwd
 
 This stands for 'print working directory'. The directory you're currently
 working in.
 
-What if we want to move back up and out of the 'shell' directory? Can we just
+```
+
+What if we want to move back up and out of the 'data' directory? Can we just
 type 'shell'? Try it and see what happens.
 
 To go 'back up a level' we need to use `..`
@@ -255,7 +285,7 @@ Type
 
     cd ..
 
-Now do `ls` and `pwd`. See now that we went back up in to the 'tutorial-shell-genomics'
+Now do `ls` and `pwd`. See now that we went back up in to the 'shell'
 directory. `..` just means go back up a level.
 
 ***
@@ -263,6 +293,7 @@ directory. `..` just means go back up a level.
 
 Now, we're going on a file hunt.
 - Move around in the 'hidden' directory and try to find the file 'youfoundit.txt'
+
 ***
 
 
@@ -276,31 +307,38 @@ directory you are in using the `pwd` command. However, you can also
 give `ls` the names of other directories to view. Navigate to the
 home directory if you are not already there.
 
+```
+Examining contents of directories
 Type:
 
     cd
 
 Then enter the command:
 
-    ls shell
+    ls shell-genomics
 
-This will list the contents of the `shell` directory without
+This will list the contents of the `shell-genomics` directory without
 you having to navigate there.
 
+```
 
 The `cd` command works in a similar way. Try entering:
 
+```
     cd
-    cd shell/hidden
+    cd shell-genomics/data/hidden
 
 and you will jump directly to `hidden` without having to go through
 the intermediate directory.
 
-****
+```
+
+***
 ##EXERCISE
 
 - Try finding the 'anotherfile.txt' file without changing directories.
-****
+
+***
 
 ### Shortcut: Tab Completion
 
@@ -312,7 +350,7 @@ directory name. For example, enter:
     cd s<tab>
 
 The shell will fill in the rest of the directory name for
-`shell`. Now go to shell/MiSeq
+`shell`. Now go to shell-genomics/data/MiSeq
 
     ls F3D<tab><tab>
 
@@ -325,6 +363,11 @@ Tab completion can also fill in the names of programs. For example,
 enter `e<tab><tab>`. You will see the name of every program that
 starts with an `e`. One of those is `echo`. If you enter `ec<tab>` you
 will see that tab completion works.
+
+```
+Tab completion is awesome.
+
+```
 
 ---
 
@@ -348,16 +391,26 @@ directory in `home` which is a directory in `/`.
 
 Now enter the following command:
 
-    cd /home/username/shell/hidden
+```
+Full path
+
+    cd /home/username/shell-genomics/data/hidden
+
+```
 
 This jumps to `hidden`. Now go back to the home directory (cd). We saw
 earlier that the command:
 
-    cd shell/hidden
+```
+Relative path
+
+    cd shell-genomics/data/hidden
+
+```
 
 had the same effect - it took us to the `hidden` directory. But,
 instead of specifying the full path
-(`/home/username/shell`), we specified a *relative path*. In
+(`/home/username/shell-genomics/data`), we specified a *relative path*. In
 other words, we specified the path relative to our current
 directory. A full path always starts with a `/`. A relative path does
 not.
@@ -379,35 +432,51 @@ Over time, it will become easier for you to keep a mental note of the
 structure of the directories that you are using and how to quickly
 navigate amongst them.
 
-* * * *
+****
 ##EXERCISE
 
 - List the contents of the /bin directory. Do you see anything
 familiar in there?
 
-* * * *
+****
 
 ## Saving time with shortcuts and wild cards
 
 ### Shortcuts
 
 There are some shortcuts which you should know about. Dealing with the
-home directory is very common. So, in the shell the tilde character,
-""~"", is a shortcut for your home directory. Navigate to the `edamame`
-directory:
+home directory is very common.
+
+```
+In the shell the tilde character, ~, is a shortcut
+for your home directory.
+
+    ls ~
+
+```
+
+Try it even when you're in the shell-genomics directory:
 
     cd
-    cd shell
+    cd shell-genomics
 
 Then enter the command:
 
     ls ~
 
 This prints the contents of your home directory, without you having to
-type the full path. The shortcut `..` always refers to the directory
-above your current directory. Thus:
+type the full path.
+
+```
+The shortcut `..` always refers to the directory
+above your current directory.
 
     ls ..
+
+prints the contents of the directory one up from
+where you are.
+
+```
 
 prints the contents of the `/home/username/`. You can chain
 these together, so:
@@ -443,17 +512,20 @@ We want to be able to look at these files and do some things with them.
 
 ### Wild cards
 
-Navigate to the `~/shell/MiSeq` directory. This
+Navigate to the `~/shell-genomics/data/MiSeq` directory. This
 directory contains our FASTQ files and some other ones
 we'll need for analyses. If we type `ls`,
 we will see that there are a bunch of files with long file names.
 Some of the end with .fastq
 
+```
 The `*` character is a shortcut for "everything". Thus, if
 you enter `ls *`, you will see all of the contents of a given
-directory. Now try this command:
+directory.
 
     ls *fastq
+
+```
 
 This lists every file that ends with a `fastq`. This command:
 
@@ -480,7 +552,7 @@ by spaces.
 
 
 
-* * * *
+***
 ##EXERCISE
 
 - What happens if you do `R1*fastq`?
@@ -493,7 +565,7 @@ navigating to a different directory.
 
 BONUS: List all of the files in '/bin' that contain the letter 'a' or 'c'
 
-* * * *
+***
 
 
 ## Command History
@@ -507,14 +579,18 @@ The down arrow takes your forwards in the command history.
 ^-R will do a reverse-search through your command history.  This
 is very useful.
 
-You can also review your recent commands with the `history` command.  Just enter:
+```
+You can also review your recent commands with the `history` command.  
 
     history
 
-to see a numbered list of recent commands, including this just issues
-`history` command.  You can reuse one of these commands directly by
+to see a numbered list of recent commands
+
+```
+You can reuse one of these commands directly by
 referring to the number of that command.
 
+```
 If your history looked like this:
 
     259  ls *
@@ -527,13 +603,15 @@ then you could repeat command #260 by simply entering:
 
 (that's an exclamation mark).
 
-* * * *
-**Short Exercise**
+```
+
+***
+##EXERCISE
 
 - Find the line number in your history for the last exercise (listing
 files in /bin) and reissue that command.
 
-* * * *
+***
 
 
 
@@ -542,39 +620,47 @@ files in /bin) and reissue that command.
 We now know how to switch directories, run programs, and look at the
 contents of directories, but how do we look at the contents of files?
 
-The easiest way to examine a file is to just print out all of the
+```
+The easiest way to examine a file is to print out all of the
 contents using the program `cat`. Enter the following command:
 
     cat F3D0_S188_L001_R1_001.fastq
 
 This prints out the contents of the `F3D0_S188_L001_R1_001.fastq` file.
 
-* * * *
+```
+
+***
 #EXERCISE
 
--  Print out the contents of the `~/edamame-data/shell/MiSeq/stability.files`
+-  Print out the contents of the `~/shell-genomics/data/MiSeq/stability.files`
     file. What does this file contain?
 
 -  Without changing directories, (you should still be in `edamame-data`),
     use one short command to print the contents of all of the files in
-    the `/home/username/edamame-data/shell/MiSeq` directory.
+    the `/home/username/shell-genomics/data/MiSeq` directory.
 
-* * * *
+***
 
 Make sure we're in the right place for the next set of the lessons. We
 want to be in the `shell` directory. Check if you're there with `pwd`
 and if not navigate there. One way to do that would be
 
-    cd ~/shell/MiSeq
+    cd ~/shell-genomics/data/MiSeq
 
 `cat` is a terrific program, but when the file is really big, it can
-be annoying to use. The program, `less`, is useful for this
-case. Enter the following command:
+be annoying to use.
+
+```
+The program, `less`, is useful when files are big and
+you want to be able to scroll through them.
 
     less F3D0_S188_L001_R1_001.fastq
 
 `less` opens the file, and lets you navigate through it. The commands
 are identical to the `man` program.
+
+```
 
 **Some commands in `less`**
 
@@ -608,7 +694,8 @@ There's another way that we can look at files, and in this case, just
 look at part of them. This can be particularly useful if we just want
 to see the beginning or end of the file, or see how it's formatted.
 
-The commands are `head` and `tail` and they just let you look at
+```
+The commands `head` and `tail` let you look at
 the beginning and end of a file respectively.
 
     head F3D0_S188_L001_R1_001.fastq
@@ -621,15 +708,19 @@ file use:
     head -n 1 F3D0_S188_L001_R1_001.fastq
     tail -n 1 F3D0_S188_L001_R1_001.fastq
 
+```
 
 ## Searching files
 
-We showed a little how to search within a file using `less`. We can also
-search within files without even opening them, using `grep`. Grep is a command-line
-utility for searching plain-text data sets for lines matching a string or regular expression.
-Let's give it a try!
+We showed a little how to search within a file using `less`.
 
-Let's search for that sequence 1101:14341 in the F3D0_S188_L001_R1_001.fastq file.
+```
+We can search within files without even opening them,
+using `grep`. Grep is a command-line utility for searching
+plain-text data sets for lines matching a string or
+regular expression.
+
+Search for that sequence 1101:14341 in the F3D0_S188_L001_R1_001.fastq file.
 
     grep 1101:14341 F3D0_S188_L001_R1_001.fastq
 
@@ -641,6 +732,8 @@ four lines, the whole part of that FASTQ sequence, back instead.
 The `-A` flag stands for "after match" so it's returning the line that
 matches plus the three after it. The `-B` flag returns that number of lines
 before the match.
+
+```
 
 ***
 ##EXERCISE
@@ -667,6 +760,7 @@ we're redirecting the output to the terminal (all the stuff that went
 whizzing by) to something else. In this case, we want to print it
 to a file, so that we can look at it later.
 
+```
 The redirection command for putting something in a file is `>`
 
 Let's try it out and put all the sequences that contain 'TTATCCGGATTTATTGGGTTTAAAGGGT'
@@ -678,6 +772,8 @@ The prompt should sit there a little bit, and then it should look like nothing
 happened. But type `ls`. You should have a new file called good-data.txt. Take
 a look at it and see if it has what you think it should.
 
+```
+
 There's one more useful redirection command that we're going to show, and that's
 called the pipe command, and it is `|`. It's probably not a key on
 your keyboard you use very much. What `|` does is take the output that
@@ -686,7 +782,13 @@ When it was all whizzing by before, we wished we could just slow it down and
 look at it, like we can with `less`. Well it turns out that we can! We pipe
 the `grep` command through `less`
 
+```
+The pipe command '|' takes the output of the first
+thing and then puts it in to the second part
+
     grep TTATCCGGATTTATTGGGTTTAAAGGGT * | less
+
+```
 
 Now we can use the arrows to scroll up and down and use `q` to get out.
 
@@ -728,24 +830,36 @@ we want to make a copy so we don't lose it.
 Lets copy the file using the `cp` command. The `cp`
 command backs up the file. Navigate to the `data` directory and enter:
 
+```
+The copy command 'cp' let's you copy files
+
     cp stability.files stability.files_backup
+
+```
 
 Now `stability.files_backup` has been created as a copy of `stability.files`.
 
 Let's make a `backup` directory where we can put this file.
 
+```
 The `mkdir` command is used to make a directory. Just enter `mkdir`
 followed by a space, then the directory name.
 
     mkdir backup
 
-We can now move our backed up file in to this directory. We can
-move files around using the command `mv`. Enter this command:
+```
+
+We can now move our backed up file in to this directory.
+
+```
+We can move files around using the command `mv`. Enter this command:
 
     mv stability.files_backup backup/
 
+```
+
 This moves `stability.files_backup` into the directory `backup/` or
-the full path would be `~/edamame-data/shell/MiSeq/backup`
+the full path would be `~/shell-genomics/data/MiSeq/backup`
 
 The `mv` command is also how you rename files. Since this file is so
 important, let's rename it:
@@ -755,14 +869,16 @@ important, let's rename it:
 Now the file name has been changed to stability.files_IMPORTANT. Let's delete
 the backup file now:
 
+```
     rm backup/stability.files_backup
 
 The `rm` file removes the file. Be careful with this command. It doesn't
 just nicely put the files in the Trash. They're really gone.
 
+```
 
 
-* * * *
+***
 ##EXERCISE
 
 Do the following:
@@ -771,7 +887,7 @@ Do the following:
 2.  Create a directory in the `MiSeq` directory called `new`
 3.  Then, copy the `stability.files` file into `new`
 
-* * * *
+***
 
 By default, `rm`, will NOT delete directories. You can tell `rm` to
 delete a directory using the `-r` option. Let's delete that `new` directory
@@ -790,7 +906,12 @@ To write in files, we're going to use the program `nano`. We're going to create
 a file that contains the favorite grep command so you can remember it for later. We'll name this file
 'awesome.sh'.
 
+```
+The program 'nano' can be used to write files
+
     nano awesome.sh
+
+```
 
 Now you have something that looks like
 
@@ -800,14 +921,17 @@ Type in your command, so it looks like
 
 ![nano2.png](img/nano2.png)
 
-Now we want to save the file and exit. At the bottom of nano, you see the "^X Exit". That
+```
+To save the file and exit. At the bottom of nano, you see the "^X Exit". That
 means that we use Ctrl-X to exit. Type `Ctrl-X`. It will ask if you want to save it. Type `y` for yes.
 Then it asks if you want that file name. Hit 'Enter'.
+
+```
 
 Now you've written a file. You can take a look at it with less or cat, or open it up again and edit it.
 
 ***
-**Exercise**
+##Exercise
 
 Open 'awesome.sh' and add "echo AWESOME!" after the grep command and save the file.
 
@@ -850,28 +974,48 @@ shell looks for programs to run. If your program is not in this list,
 then an error is printed. The shell ONLY checks in the places listed
 in the `PATH` environment variable.
 
-Navigate to the `shell` directory and list the contents. You will
+Navigate to the `shell-genomics/data` directory and list the contents. You will
 notice that there is a program (executable file) called `hello.sh` in
 this directory. Now, try to run the program by entering:
 
+```
+Running programs
+
+    cd shell-genomics/data
     hello.sh
+
+This won't work because the shell isn't looking
+in the right place for it.
+
+```
 
 You should get an error saying that hello.sh cannot be found. That is
 because the directory `/home/username/edamame-data/shell` is not in the
 `PATH`. You can run the `hello.sh` program by entering:
 
+```
     ./hello.sh
+
+This will work, becuase we told it to look in this
+directory '.' for the program.
+
+```
 
 Remember that `.` is a shortcut for the current working
 directory. This tells the shell to run the `hello.sh` program which is
 located right here. So, you can run any program by entering the path
 to that program. You can run `hello.sh` equally well by specifying:
 
-    /home/username/shell/hello.sh
+```
+The program can also be run by using the full path
+
+    /home/username/shell-genomics/data/hello.sh
 
 Or by entering:
 
-    ~/shell/hello.sh
+    ~/shell-genomics/data/hello.sh
+
+```
 
 When there are no `/` characters, the shell assumes you want to look
 in one of the default places for the program.
@@ -895,20 +1039,29 @@ the computer that it's a program. To do that we have to make it 'executable'. We
 by changing its mode. The command for that is `chmod` - change mode. We're going to change the mode
 of this file, so that it's executable and the computer knows it's OK to run it as a program.
 
+```
+To run a program, you have to set the right permissions, make it
+executable rather than just a text file.
+
     chmod +x awesome.sh
 
-Now let's try running it again
+Now we can run the program
 
     ./awesome.sh
 
+```
+
 Now you should have seen some output, and of course, it's AWESOME!
+
+```
 Congratulations, you just created your first shell script! You're set to rule the world.
 
+```
 
 
 ## Where can I learn more about the shell?
 
-- Software Carpentry tutorial - [The Unix shell](http://software-carpentry.org/v4/shell/index.html)
+- Software Carpentry tutorial - [The Unix shell](http://software-carpentry.org/v4/shell-genomics/index.html)
 - The shell handout - [Command Reference](http://files.fosswire.com/2007/08/fwunixref.pdf)
 - [explainshell.com](http://explainshell.com)
 - http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
@@ -916,5 +1069,5 @@ Congratulations, you just created your first shell script! You're set to rule th
 - Google - if you don't know how to do something, try Googling it. Other people
 have probably had the same question.
 - Learn by doing. There's no real other way to learn this than by trying it
-out.  Write your next paper in nano (really emacs or vi), open pdfs from
-the command line, automate something you don't really need to automate.
+out.  Write your next paper in nano, open pdfs from
+the command line, automate something you don't really need to automate or actually do.
