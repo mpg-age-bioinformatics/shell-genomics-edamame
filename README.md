@@ -1,8 +1,5 @@
 ---
-layout: page
 title: "The Shell"
-comments: true
-date: 2014-08-13 16:44:36
 ---
 
 # The Command Line or the Shell
