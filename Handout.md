@@ -1,7 +1,3 @@
----
-title: Shell Genomics Workshop Handout
----
-
 ##Handout for shell-genomics workshop
 ###Contributor: Tracy Teal
 
