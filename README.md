@@ -1,7 +1,3 @@
----
-title: "The Shell"
----
-
 # The Command Line or the Shell
 
 Author: Tracy Teal  
