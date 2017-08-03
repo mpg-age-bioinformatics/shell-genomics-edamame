@@ -96,7 +96,7 @@ Open the shell
 
 Enter the command:
 
-    git clone https://github.com/tracykteal/tutorials/
+    git clone https://github.com/tracykteal/shell-genomics-edamame/
 
 This command will grab all of the data needed for this workshop from
 the internet.  (We're not going to talk about git right now, but it's a tool for
